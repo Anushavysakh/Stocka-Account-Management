@@ -1,45 +1,34 @@
 package com.stockmanagement.assignment;
 
-public class Stock {
-	 private String shareName;
-	    private double sharePrice;
-	    private double shareCount;
-	    public Stock(String shareName,double sharePrice,double shareCount) {
-			this.shareName = shareName;
-			this.sharePrice = sharePrice;
-			this.shareCount = shareCount;
-		}
-	    
-		public Stock() {
-			// TODO Auto-generated constructor stub
-		}
 
-		public String getShareName() {
-			return shareName;
-		}
-		
-		public void setShareName(String shareName) {
-			this.shareName = shareName;
-		}
-		
-		public double getSharePrice() {
-			return sharePrice;
-		}
-		
-		public void setSharePrice(double sharePrice) {
-			this.sharePrice = sharePrice;
-		}
-		
-		public double getShareCount() {
-			return shareCount;
-		}
-		
-		public void setShareCount(double shareCount) {
-			this.shareCount = shareCount;
-		}
-		
-		public String toString(){
-			return shareName+" "+sharePrice+" "+shareCount+"  "+(sharePrice*shareCount)+" "+"\n";
-		}
+import java.util.Scanner;
 
+public class Account {
+
+	static Scanner sc = new Scanner(System.in);
+
+	private double balance;
+
+	public Account(double balance) {
+		super();
+		this.balance = balance;
+		// TODO Auto-generated constructor stub
+	}
+
+	public void debit(double balance) {
+		System.out.println("enter ammount to withdraw");
+		double withdraw = sc.nextDouble();
+		if (withdraw > balance)
+			System.out.println("withdraw exceeds the balance please enter correct ammount");
+		else
+			balance = balance - withdraw;
+		System.out.println("Remaining balance is " + balance);
+	}
+
+	public static void main(String[] args) {
+
+		System.out.println("Enter the balance to mention in the account");
+		Account account = new Account(sc.nextDouble());
+		account.debit(account.balance);
+	}
 }
